@@ -1,6 +1,10 @@
+import {summerize} from '../src/main'
+
 describe('', ()=> {
 
-    it.todo('test');
+    it('dumb', () => {
+//       expect(summerize());
+    });
 
     it.todo('sorted by category');
 
@@ -11,4 +15,5 @@ describe('', ()=> {
     it.todo('Print total per category per month for a given category.');
 
     it.todo('Print total per category for all (non zero) categories for a given month.');
+
 })
