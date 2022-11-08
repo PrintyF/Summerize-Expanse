@@ -1,4 +1,4 @@
-import {summerize} from '../src/main'
+import {Record, RecordSum, summerize} from '../src/main'
 
 describe('Summerize', ()=> {
 
@@ -6,6 +6,28 @@ describe('Summerize', ()=> {
         expect(summerize([])).toEqual([]);
     });
 
+    describe('Test with one category', () => {
+        let recordsTest: Array<Record> = [];
+        let recordsSumResponse: Array<RecordSum> = [];
+        beforeEach(() => {
+            recordsTest = [];
+            recordsSumResponse = [];
+        })
+
+
+        it('Test with one item in list', () => {
+            recordsTest.push({amount: 10,category: 'home',dateOfexpense: new Date()});
+            recordsSumResponse.push({totalAmount: 10,category: 'home'});
+            expect(summerize(recordsTest)).toEqual(recordsSumResponse);
+        });
+
+        it('Test with a different item in list', () => {
+            recordsTest.push({amount: 10,category: 'cinema',dateOfexpense: new Date()});
+            recordsSumResponse.push({totalAmount: 10,category: 'cinema'});
+            expect(summerize(recordsTest)).toEqual(recordsSumResponse);
+        });
+
+    })
 
     it.todo('sorted by category');
 
