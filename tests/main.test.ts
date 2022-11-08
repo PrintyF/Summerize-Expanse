@@ -1,18 +1,19 @@
 import {Record, RecordSum, summerize} from '../src/main'
 
 describe('Summerize', ()=> {
+    let recordsTest: Array<Record> = [];
+    let recordsSumResponse: Array<RecordSum> = [];
 
     it('Test with an empty list', () => {
         expect(summerize([])).toEqual([]);
     });
 
-    describe('Test with one category', () => {
-        let recordsTest: Array<Record> = [];
-        let recordsSumResponse: Array<RecordSum> = [];
-        beforeEach(() => {
-            recordsTest = [];
-            recordsSumResponse = [];
-        })
+    beforeEach(() => {
+        recordsTest = [];
+        recordsSumResponse = [];
+    })
+
+    describe('Tests with one item in list', () => {
 
 
         it('Test with one item in list', () => {
@@ -34,6 +35,18 @@ describe('Summerize', ()=> {
         });
 
     })
+
+    describe('Tests with two item in list', ()=> {
+
+        it('Test with two item in list from two different category', () => {
+            recordsTest.push({amount: 10, category: 'home',dateOfexpense: new Date()});
+            recordsTest.push({amount: 10, category: 'school',dateOfexpense: new Date()});
+            recordsSumResponse.push({totalAmount: 10,category: 'home'});
+            recordsSumResponse.push({totalAmount: 10,category: 'school'});
+            expect(summerize(recordsTest)).toEqual(recordsSumResponse);
+        });
+
+    });
 
     it.todo('sorted by category');
 
