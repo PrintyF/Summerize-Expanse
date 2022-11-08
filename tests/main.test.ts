@@ -36,13 +36,23 @@ describe('Summerize', ()=> {
 
     })
 
-    describe('Tests with two item in list', ()=> {
+    describe('Tests with more than one item in list with each there own category', ()=> {
 
-        it('Test with two item in list from two different category', () => {
+        it('Test with two items in list', () => {
             recordsTest.push({amount: 10, category: 'home',dateOfexpense: new Date()});
             recordsTest.push({amount: 10, category: 'school',dateOfexpense: new Date()});
             recordsSumResponse.push({totalAmount: 10,category: 'home'});
             recordsSumResponse.push({totalAmount: 10,category: 'school'});
+            expect(summerize(recordsTest)).toEqual(recordsSumResponse);
+        });
+
+        it('Test with three items in list', () => {
+            recordsTest.push({amount: 10, category: 'home',dateOfexpense: new Date()});
+            recordsTest.push({amount: 10, category: 'school',dateOfexpense: new Date()});
+            recordsTest.push({amount: 15, category: 'food',dateOfexpense: new Date()});
+            recordsSumResponse.push({totalAmount: 10,category: 'home'});
+            recordsSumResponse.push({totalAmount: 10,category: 'school'});
+            recordsSumResponse.push({totalAmount: 15,category: 'food'});
             expect(summerize(recordsTest)).toEqual(recordsSumResponse);
         });
 
