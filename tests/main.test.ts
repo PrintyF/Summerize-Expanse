@@ -66,6 +66,14 @@ describe('Summerize', ()=> {
             expect(summerize(recordsTest)).toEqual(recordsSumResponse);
         });
 
+        it('Test with three items in list', () => {
+            recordsTest.push({amount: 10, category: 'home',dateOfexpense: new Date()});
+            recordsTest.push({amount: 10, category: 'home',dateOfexpense: new Date()});
+            recordsTest.push({amount: 15, category: 'home',dateOfexpense: new Date()});
+            recordsSumResponse.push({totalAmount: 35,category: 'home'});
+            expect(summerize(recordsTest)).toEqual(recordsSumResponse);
+        });
+
     });
 
 

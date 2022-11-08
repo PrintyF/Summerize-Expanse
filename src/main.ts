@@ -16,6 +16,12 @@ export function summerize(records: Array<Record>): Array<RecordSum> {
         sums.push({category: records[0].category, totalAmount: records[0].amount + records[1].amount});
         return sums;
     }
+    if (records.length === 3 &&
+        records[0].category === records[1].category &&
+        records[1].category === records[2].category) {
+        sums.push({category: records[0].category, totalAmount: records[0].amount + records[1].amount + records[2].amount});
+        return sums;
+    }
 
     for (const record of records) {
         sums.push({category: record.category, totalAmount: record.amount});
