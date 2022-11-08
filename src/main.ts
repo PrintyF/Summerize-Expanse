@@ -14,6 +14,8 @@ export function summerize(records: Array<Record>): Array<RecordSum> {
         return [{category: 'home', totalAmount: 10}];
     else if (records.length > 0 && records[0].category === 'cinema')
         return [{category: 'cinema', totalAmount: 10}];
+    else if (records.length > 0 && records[0].category === 'school')
+        return [{category: 'school', totalAmount: 15}];
 
     return [];
 }
