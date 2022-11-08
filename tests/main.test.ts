@@ -1,10 +1,11 @@
 import {summerize} from '../src/main'
 
-describe('', ()=> {
+describe('Summerize', ()=> {
 
-    it('dumb', () => {
-//       expect(summerize());
+    it('Test with an empty list', () => {
+        expect(summerize([])).toEqual([]);
     });
+
 
     it.todo('sorted by category');
 
