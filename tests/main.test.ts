@@ -58,7 +58,18 @@ describe('Summerize', ()=> {
 
     });
 
-    it.todo('sorted by category');
+    describe('Tests with more than one item in list with one category', ()=> {
+        it('Test with two items in list', () => {
+            recordsTest.push({amount: 10, category: 'home',dateOfexpense: new Date()});
+            recordsTest.push({amount: 10, category: 'home',dateOfexpense: new Date()});
+            recordsSumResponse.push({totalAmount: 20,category: 'home'});
+            expect(summerize(recordsTest)).toEqual(recordsSumResponse);
+        });
+
+    });
+
+
+   it.todo('sorted by category');
 
     it.todo('If the amount for a category is zero, this category should not appear in the output.');
 
