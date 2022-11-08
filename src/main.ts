@@ -12,21 +12,17 @@ export interface RecordSum {
 export function summerize(records: Array<Record>): Array<RecordSum> {
     let sums : Array<RecordSum> = [];
 
-    if (records.length === 2 && records[0].category === records[1].category) {
-        sums.push({category: records[0].category, totalAmount: records[0].amount + records[1].amount});
-        return sums;
-    }
-    if (records.length === 3 &&
-        records[0].category === records[1].category &&
-        records[1].category === records[2].category) {
-        sums.push({category: records[0].category, totalAmount: records[0].amount + records[1].amount + records[2].amount});
-        return sums;
+    for (let i = 0; i < records.length; i++) {
+        sums.push({category: records[i].category, totalAmount: records[i].amount});
     }
 
-    for (const record of records) {
-        sums.push({category: record.category, totalAmount: record.amount});
+    for (let i = 0; i < sums.length - 1; i++) {
+        if (sums[i].category === sums[i + 1].category) {
+            sums[i].totalAmount += sums[i + 1].totalAmount;
+            sums.splice(i + 1, 1);
+            i = -1;
+        }
     }
-
 
     return sums;
 }

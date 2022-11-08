@@ -4,7 +4,7 @@ describe('Summerize', ()=> {
     let recordsTest: Array<Record> = [];
     let recordsSumResponse: Array<RecordSum> = [];
 
-    it('Test with an empty list', () => {
+    it('an empty list', () => {
         expect(summerize([])).toEqual([]);
     });
 
@@ -16,19 +16,19 @@ describe('Summerize', ()=> {
     describe('Tests with one item in list', () => {
 
 
-        it('Test with one item in list', () => {
+        it('one item in list', () => {
             recordsTest.push({amount: 10,category: 'home',dateOfexpense: new Date()});
             recordsSumResponse.push({totalAmount: 10,category: 'home'});
             expect(summerize(recordsTest)).toEqual(recordsSumResponse);
         });
 
-        it('Test with a different item in list', () => {
+        it('a different item in list', () => {
             recordsTest.push({amount: 10,category: 'cinema',dateOfexpense: new Date()});
             recordsSumResponse.push({totalAmount: 10,category: 'cinema'});
             expect(summerize(recordsTest)).toEqual(recordsSumResponse);
         });
 
-        it('Test with a third different item in list', () => {
+        it('a third different item in list', () => {
             recordsTest.push({amount: 15,category: 'school',dateOfexpense: new Date()});
             recordsSumResponse.push({totalAmount: 15,category: 'school'});
             expect(summerize(recordsTest)).toEqual(recordsSumResponse);
@@ -38,7 +38,7 @@ describe('Summerize', ()=> {
 
     describe('Tests with more than one item in list with each there own category', ()=> {
 
-        it('Test with two items in list', () => {
+        it('two items in list', () => {
             recordsTest.push({amount: 10, category: 'home',dateOfexpense: new Date()});
             recordsTest.push({amount: 10, category: 'school',dateOfexpense: new Date()});
             recordsSumResponse.push({totalAmount: 10,category: 'home'});
@@ -46,7 +46,7 @@ describe('Summerize', ()=> {
             expect(summerize(recordsTest)).toEqual(recordsSumResponse);
         });
 
-        it('Test with three items in list', () => {
+        it('three items in list', () => {
             recordsTest.push({amount: 10, category: 'home',dateOfexpense: new Date()});
             recordsTest.push({amount: 10, category: 'school',dateOfexpense: new Date()});
             recordsTest.push({amount: 15, category: 'food',dateOfexpense: new Date()});
@@ -59,14 +59,14 @@ describe('Summerize', ()=> {
     });
 
     describe('Tests with more than one item in list with one category', ()=> {
-        it('Test with two items in list', () => {
+        it('two items in list', () => {
             recordsTest.push({amount: 10, category: 'home',dateOfexpense: new Date()});
             recordsTest.push({amount: 10, category: 'home',dateOfexpense: new Date()});
             recordsSumResponse.push({totalAmount: 20,category: 'home'});
             expect(summerize(recordsTest)).toEqual(recordsSumResponse);
         });
 
-        it('Test with three items in list', () => {
+        it('three items in list', () => {
             recordsTest.push({amount: 10, category: 'home',dateOfexpense: new Date()});
             recordsTest.push({amount: 10, category: 'home',dateOfexpense: new Date()});
             recordsTest.push({amount: 15, category: 'home',dateOfexpense: new Date()});
@@ -74,8 +74,16 @@ describe('Summerize', ()=> {
             expect(summerize(recordsTest)).toEqual(recordsSumResponse);
         });
 
-    });
+        it('four items in list', () => {
+            recordsTest.push({amount: 10, category: 'home',dateOfexpense: new Date()});
+            recordsTest.push({amount: 10, category: 'home',dateOfexpense: new Date()});
+            recordsTest.push({amount: 15, category: 'home',dateOfexpense: new Date()});
+            recordsTest.push({amount: 15, category: 'home',dateOfexpense: new Date()});
+            recordsSumResponse.push({totalAmount: 50,category: 'home'});
+            expect(summerize(recordsTest)).toEqual(recordsSumResponse);
+        });
 
+    });
 
    it.todo('sorted by category');
 
